@@ -11,6 +11,7 @@ FastAPI service for predicting customer churn using a trained Random Forest mode
 
 ## Project Structure
 
+```text
 d2c-churn-api/
 │
 ├── app/
@@ -21,6 +22,7 @@ d2c-churn-api/
 ├── requirements.txt
 ├── monitoring_plan.md
 └── README.md
+```
 
 ## Installation
 
