@@ -175,9 +175,20 @@ def batch_predict(data_list: list[CustomerFeatures]):
         ]]
 
         prediction = int(model.predict(features)[0])
-        results.append({"churn_prediction": prediction})
 
-    return {"predictions": results}
+probability = float(model.predict_proba(features)[0][1])
 
+if probability >= 0.8:
+    risk = "High churn risk"
+elif probability >= 0.5:
+    risk = "Medium churn risk"
+else:
+    risk = "Low churn risk"
+
+results.append({
+    "churn_prediction": prediction,
+    "churn_probability": round(probability, 4),
+    "risk_explanation": risk
+})
 
 
