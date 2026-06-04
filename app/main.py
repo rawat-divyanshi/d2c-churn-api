@@ -108,6 +108,22 @@ def predict(data: CustomerFeatures):
         data.preferred_category_Wellness,
         data.marketing_consent_Yes
     ]]
+    prediction = int(model.predict(features)[0])
+
+    probability = float(model.predict_proba(features)[0][1])
+
+    if probability >= 0.8:
+        risk = "High churn risk"
+    elif probability >= 0.5:
+        risk = "Medium churn risk"
+    else:
+        risk = "Low churn risk"
+
+    return {
+        "churn_prediction": prediction,
+        "churn_probability": round(probability, 4),
+        "risk_explanation": risk
+    }
 
 @app.post("/batch_predict")
 def batch_predict(data_list: list[CustomerFeatures]):
