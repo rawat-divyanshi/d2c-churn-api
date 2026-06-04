@@ -109,6 +109,65 @@ def predict(data: CustomerFeatures):
         data.marketing_consent_Yes
     ]]
 
+
     prediction = int(model.predict(features)[0])
 
-    return {"churn_prediction": prediction}
+    probability = float(model.predict_proba(features)[0][1])
+
+    return {
+        "churn_prediction": prediction,
+        "churn_probability": round(probability, 4)
+    }
+    
+@app.post("/batch_predict")
+def batch_predict(data_list: list[CustomerFeatures]):
+    results = []
+
+    for data in data_list:
+        features = [[
+            data.recency_days,
+            data.frequency_180d,
+            data.monetary_180d,
+            data.return_rate_180d,
+            data.avg_discount_pct_180d,
+            data.avg_rating_180d,
+            data.category_diversity_180d,
+            data.ticket_count_90d,
+            data.negative_ticket_rate_90d,
+            data.avg_resolution_hours_90d,
+            data.days_since_signup,
+            data.sessions_30d,
+            data.product_views_30d,
+            data.cart_adds_30d,
+            data.wishlist_adds_30d,
+            data.abandoned_carts_30d,
+            data.email_opens_30d,
+            data.campaign_clicks_30d,
+            data.last_visit_days_ago,
+            data.city_tier_Tier_2,
+            data.city_tier_Tier_3,
+            data.age_group_25_34,
+            data.age_group_35_44,
+            data.age_group_45_plus,
+            data.acquisition_channel_Influencer,
+            data.acquisition_channel_Instagram,
+            data.acquisition_channel_Marketplace,
+            data.acquisition_channel_Organic,
+            data.acquisition_channel_Referral,
+            data.loyalty_tier_Platinum,
+            data.loyalty_tier_Silver,
+            data.preferred_category_Fragrance,
+            data.preferred_category_Hair_Care,
+            data.preferred_category_Makeup,
+            data.preferred_category_Skin_Care,
+            data.preferred_category_Wellness,
+            data.marketing_consent_Yes
+        ]]
+
+        prediction = int(model.predict(features)[0])
+        results.append({"churn_prediction": prediction})
+
+    return {"predictions": results}
+
+
+
