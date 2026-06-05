@@ -276,6 +276,24 @@ Recommended production monitoring metrics:
 
 ---
 
+## Responsible Use
+
+This API provides churn-risk predictions to support retention decisions.
+
+Recommended Use:
+- Prioritize customers for retention campaigns.
+- Identify customers who may need additional engagement.
+- Use predictions together with business knowledge and customer context.
+
+Do Not Use:
+- Do not make fully automated decisions based only on model output.
+- Do not treat predictions as guaranteed outcomes.
+- Do not use the model for discriminatory or unfair customer treatment.
+
+The model should be used as a decision-support tool, not as a replacement for human judgment.
+
+---
+
 ## Future Improvements
 
 - Docker Containerization
