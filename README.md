@@ -1,5 +1,8 @@
 # D2C Customer Churn Prediction API
 
+#### Name :- Divyanshi Rawat
+#### Student_ID :- iitp_aiml_2506097
+
 Production-ready FastAPI service for predicting customer churn in a Direct-to-Consumer (D2C) business using a trained Random Forest Machine Learning model.
 
 ---
