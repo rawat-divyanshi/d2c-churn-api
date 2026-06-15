@@ -311,6 +311,22 @@ The model should be used as a decision-support tool, not as a replacement for hu
 
 ---
 
+## Docker Setup
+
+Build image:
+
+docker build -t churn-api .
+
+Run container:
+
+docker run -p 8000:8000 churn-api
+
+Open:
+
+http://localhost:8000/docs
+
+---
+
 ## Results
 
 Successfully deployed a trained machine learning churn prediction model through a FastAPI service with:
