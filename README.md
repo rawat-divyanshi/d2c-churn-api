@@ -1,4 +1,4 @@
-# D2C Customer Churn Prediction API
+# Part 4: D2C Customer Churn Prediction API
 
 #### Name :- Divyanshi Rawat
 #### Student_ID :- iitp_aiml_2506097
